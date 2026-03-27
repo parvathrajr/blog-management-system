@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Landing</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#111;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ===== HERO SECTION ===== */
+.hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:80px 8%;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:600px;
+    height:600px;
+    border-radius:50%; 
+    background:white;
+    opacity:0.05;
+    top:-200px;
+    right:-150px;
+    transition:0.6s ease;
+}
+
+.hero:hover::before{
+    transform:scale(1.1);
+    opacity:0.08;
+}
+
+.left{
+    width:45%;
+    z-index:2;
+}
+
+.left h4{
+    letter-spacing:3px;
+    font-weight:400;
+    color:#aaa;
+    margin-bottom:20px;
+}
+
+.left h1{
+    font-size:48px;
+    font-weight:700;
+    line-height:1.2;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 30px;
+    border:1px solid white;
+    color:white;
+    text-decoration:none;
+    transition:0.4s ease;
+    letter-spacing:1px;
+}
+
+.btn:hover{
+    background:white;
+    color:black;
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(255,255,255,0.2);
+}
+
+/* Right Cards */
+.right{
+    width:50%;
+    position:relative;
+    height:500px;
+}
+
+.card{
+    position:absolute;
+    width:280px;
+    background:#1c1c1c;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.6);
+    transition:0.5s ease;
+    cursor:pointer;
+}
+
+.card1{ top:0; left:80px; }
+.card2{ top:80px; left:200px; }
+.card3{ top:160px; left:40px; }
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    filter:grayscale(100%);
+    transition:0.6s ease;
+}
+
+.card-content{ padding:20px; }
+.card-content h3{ font-size:18px; margin-bottom:10px; }
+.card-content p{ font-size:13px; color:#bbb; }
+
+.card:hover{
+    transform:translateY(-15px) scale(1.05);
+    box-shadow:0 25px 60px rgba(255,255,255,0.15);
+}
+
+.card:hover img{
+    filter:grayscale(0%);
+    transform:scale(1.1);
+}
+
+/* ===== BLOG SECTION BELOW HERO ===== */
+.blog-section{
+    padding:70px 8%;
+}
+
+.blog-section h2{
+    font-size:36px;
+    margin-bottom:25px;
+    text-align:center;
+}
+
+/* Blog Grid */
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.blog-box{
+    background:#1b1b1b;
+    border-radius:15px;
+    padding:20px;
+    transition:0.4s ease;
+    border:1px solid #222;
+}
+
+.blog-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(255,255,255,0.1);
+}
+
+.blog-box img{
+    width:100%;
+    height:180px;
+    border-radius:10px;
+    object-fit:cover;
+}
+
+.blog-info{
+    margin-top:15px;
+}
+
+.blog-info h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.blog-info p{
+    font-size:14px;
+    color:#bbb;
+    line-height:1.6;
+}
+
+.blog-meta{
+    margin-top:10px;
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    color:#888;
+}
+
+/* Categories Section */
+.categories{
+    margin-top:80px;
+    padding:30px 0;
+}
+
+.categories h3{
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.category-list{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.category-list span{
+    padding:8px 20px;
+    background:#222;
+    border-radius:20px;
+    font-size:14px;
+    border:1px solid #333;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.category-list span:hover{
+    background:white;
+    color:black;
+}
+
+/* Author Box */
+.author-box{
+    margin-top:80px;
+    background:#1b1b1b;
+    padding:40px;
+    display:flex;
+    gap:20px;
+    border-radius:15px;
+}
+
+.author-box img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.author-info h3{ font-size:22px; }
+.author-info p{ font-size:14px; color:#bbb; margin-top:5px; }
+
+.social-icons i{
+    font-size:18px;
+    margin-right:10px;
+    margin-top:15px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.social-icons i:hover{
+    color:#1e90ff;
+}
+
+/* Stats Section */
+.stats{
+    margin-top:80px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    text-align:center;
+}
+
+.stats div{
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:15px;
+    border:1px solid #222;
+}
+
+.stats h1{ font-size:40px; }
+.stats p{ font-size:14px; color:#aaa; }
+
+/* Footer */
+.footer{
+    margin-top:80px;
+    padding:30px;
+    text-align:center;
+    border-top:1px solid #333;
+    color:#aaa;
+}
+
+/* Responsive */
+@media(max-width:900px){
+    .stats{ grid-template-columns:1fr; }
+    .author-box{ flex-direction:column; text-align:center; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="left">
+        <h4><i class="fa-brands fa-wordpress"></i> blogpage</h4>
+        <h1>How to Create a<br>Modern Blog Website</h1>
+        <a href="#" class="btn">Read More</a>
+    </div>
+
+    <div class="right">
+
+        <div class="card card1">
+            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
+            <div class="card-content">
+                <h3>New Vintage Version</h3>
+                <p>Create stylish blog layouts with modern UI design and smooth animations.</p>
+            </div>
+        </div>
+
+        <div class="card card2">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+            <div class="card-content">
+                <h3>Creative Layout</h3>
+                <p>Clean typography and structured sections for powerful storytelling.</p>
+            </div>
+        </div>
+
+        <div class="card card3">
+            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
+            <div class="card-content">
+                <h3>Minimal Design</h3>
+                <p>Black & white aesthetic with smooth hover effects and transitions.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BLOG SECTION -->
+<section class="blog-section">
+
+    <h2><i class="fa-solid fa-newspaper"></i> Latest Blog Posts</h2>
+
+    <div class="blog-grid">
+
+        <div class="blog-box">
+            <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d">
+            <div class="blog-info">
+                <h3>5 Ways to Improve Your Blog UI</h3>
+                <p>Learn advanced layout structures, animations, themes, and typography best practices.</p>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Jan 2, 2024</span>
+                    <span><i class="fa-regular fa-eye"></i> 25k views</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-box">
+            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f">
+            <div class="blog-info">
+                <h3>Top 10 Tools for WordPress Bloggers</h3>
+                <p>Best plugins, SEO tools, analytics, and optimization features for 2024.</p>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Feb 12, 2024</span>
+                    <span><i class="fa-regular fa-eye"></i> 18k views</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-box">
+            <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312">
+            <div class="blog-info">
+                <h3>The Future of Blogging in AI Era</h3>
+                <p>AI tools to automate content, optimize performance, and enhance storytelling.</p>
+                <div class="blog-meta">
+                    <span><i class="fa-regular fa-calendar"></i> Mar 5, 2024</span>
+                    <span><i class="fa-regular fa-eye"></i> 32k views</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="categories">
+        <h3><i class="fa-solid fa-list"></i> Popular Categories</h3>
+        <div class="category-list">
+            <span>WordPress</span>
+            <span>UI/UX Design</span>
+            <span>SEO</span>
+            <span>Marketing</span>
+            <span>Tech</span>
+            <span>Tools</span>
+        </div>
+    </div>
+
+    <!-- AUTHOR BOX -->
+    <div class="author-box">
+    <img src="/static/images/parvath-raj-author.jpeg" alt="Parvath Raj">
+    <div class="author-info">
+        <h3>Author: Parvath Raj</h3>
+        <p>Creative UI/UX Designer, Frontend Developer & Blog Content Designer.</p>
+
+        <div class="social-icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin"></i>
+        </div>
+    </div>
+</div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div>
+            <h1>1</h1>
+            <p>Articles Published</p>
+        </div>
+        <div>
+            <h1>1</h1>
+            <p>Monthly Readers</p>
+        </div>
+        <div>
+            <h1>1</h1>
+            <p>Comments Posted</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+   © 2026 Blog Management System | Designed by Parvath Raj
+</div>
+
+</body>
+</html>

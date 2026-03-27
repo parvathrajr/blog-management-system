@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Blog Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            background:#000;
+            overflow:hidden;
+        }
+
+        /* ===== LEFT SIDE REGISTER ===== */
+        .left{
+            width:50%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#000,#1a1a1a,#000);
+            animation:bgMove 8s infinite alternate;
+        }
+
+        @keyframes bgMove{
+            from{background-position:left;}
+            to{background-position:right;}
+        }
+
+        .register-box{
+            width:400px;
+            padding:45px;
+            background:rgba(255,255,255,0.05);
+            backdrop-filter:blur(15px);
+            border-radius:15px;
+            box-shadow:0 20px 50px rgba(255,255,255,0.05);
+            transition:0.4s;
+        }
+
+        .register-box:hover{
+            transform:translateY(-10px);
+            box-shadow:0 30px 60px rgba(255,255,255,0.1);
+        }
+
+        h2{
+            text-align:center;
+            color:white;
+            margin-bottom:30px;
+            letter-spacing:1px;
+        }
+
+        .input-box{
+            margin-bottom:20px;
+        }
+
+        .input-box input{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:8px;
+            background:rgba(255,255,255,0.08);
+            color:white;
+            outline:none;
+            transition:0.3s;
+        }
+
+        .input-box input:focus{
+            background:rgba(255,255,255,0.15);
+            transform:scale(1.05);
+            box-shadow:0 0 15px rgba(255,255,255,0.2);
+        }
+
+        .btn{
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:8px;
+            background:white;
+            color:black;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.4s;
+        }
+
+        .btn:hover{
+            background:black;
+            color:white;
+            transform:translateY(-5px);
+            box-shadow:0 10px 25px rgba(255,255,255,0.2);
+        }
+
+        .btn:active{
+            transform:scale(0.95);
+        }
+
+        .link{
+            text-align:center;
+            margin-top:20px;
+            color:#ccc;
+        }
+
+        .link a{
+            color:white;
+            font-weight:bold;
+            text-decoration:none;
+            position:relative;
+        }
+
+        .link a::after{
+            content:'';
+            position:absolute;
+            width:0%;
+            height:2px;
+            left:0;
+            bottom:-4px;
+            background:white;
+            transition:0.4s;
+        }
+
+        .link a:hover::after{
+            width:100%;
+        }
+
+        /* ===== RIGHT SIDE IMAGE ===== */
+        .right{
+            width:50%;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .right img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition:0.8s ease;
+            filter:grayscale(100%);
+        }
+
+        .right:hover img{
+            transform:scale(1.1);
+            filter:grayscale(0%);
+        }
+
+        .overlay{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.5);
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            color:white;
+            padding:40px;
+            transition:0.5s;
+        }
+
+        .overlay h1{
+            font-size:40px;
+            margin-bottom:20px;
+            letter-spacing:2px;
+        }
+
+        .overlay p{
+            font-size:18px;
+            color:#ddd;
+            max-width:400px;
+        }
+
+        .right:hover .overlay{
+            background:rgba(0,0,0,0.3);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:900px){
+            body{
+                flex-direction:column;
+            }
+            .left,.right{
+                width:100%;
+                height:50%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- LEFT REGISTER -->
+    <div class="left">
+        <div class="register-box">
+            <h2>Create Account</h2>
+
+            <!-- FIXED FORM -->
+            <form method="POST" action="/register">
+
+                <div class="input-box">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+
+                <button type="submit" class="btn">Register</button>
+
+                <div class="link">
+                    Already have an account? <a href="/login">Login</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="right">
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Blog Image">
+
+        <div class="overlay">
+            <h1>Join Blog Management</h1>
+            <p>Create your account and start managing your blogs with powerful tools and modern design.</p>
+        </div>
+    </div>
+
+</body>
+</html>

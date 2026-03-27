@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Right Navbar Dashboard</title>
+
+<style>
+
+/* ================= BODY WITH SPLIT IMAGE BACKGROUND ================= */
+body.dashboard-page {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    color: #fff;
+    background:
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+        url("https://images.unsplash.com/photo-1492724441997-5dc865305da7") left center/50% 100% no-repeat,
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee") right center/50% 100% no-repeat;
+    background-blend-mode: overlay;
+}
+
+/* ================= MAIN CONTENT ================= */
+.main-content {
+    flex: 1;
+    padding: 40px;
+    padding-right: 280px; /* space for right navbar */
+}
+
+.header {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+/* ================= CARDS ================= */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    transition: 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    background: rgba(255,255,255,0.15);
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.card p {
+    color: #ddd;
+}
+
+/* ================= RIGHT NAVBAR ================= */
+.right-navbar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 35px 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.05);
+    border-left: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Nav Buttons */
+.nav-btn {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: #ffffff;
+    color: #000;
+}
+
+</style>
+</head>
+
+<body class="dashboard-page">
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+    <div class="header">Dashboard Overview</div>
+
+    <div class="cards">
+
+        <!-- TOTAL POSTS -->
+        <div class="card">
+            <h3>{{ total_posts }}</h3>
+            <p>Total Posts</p>
+        </div>
+
+        <!-- TOTAL VIEWS -->
+        <div class="card">
+            <h3>{{ total_views }}</h3>
+            <p>Total Views</p>
+        </div>
+
+        <!-- TOTAL EARNINGS -->
+        <div class="card">
+            <h3>₹0</h3>
+            <p>Total Earnings</p>
+        </div>
+
+        <!-- COMMENTS -->
+        <div class="card">
+            <h3>0</h3>
+            <p>New Comments</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- RIGHT NAVBAR -->
+<div class="right-navbar">
+    <div class="nav-title">DASHBOARD</div>
+
+    <a href="/dashboard" class="nav-btn">Dashboard</a>
+    <a href="/add" class="nav-btn">Create Post</a>
+    <a href="/myposts" class="nav-btn">My Posts</a>
+    <a href="/logout" class="nav-btn">Logout</a>
+</div>
+
+</body>
+</html>

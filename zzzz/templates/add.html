@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add New Post</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+        url("https://images.unsplash.com/photo-1492724441997-5dc865305da7") center/cover no-repeat;
+    color: #fff;
+}
+
+.container {
+    width: 500px;
+    padding: 35px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    animation: slideUp 0.7s ease forwards;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #ccc;
+}
+
+input, select, textarea {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    transition: 0.4s ease;
+}
+
+input:hover, select:hover, textarea:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+input:focus, select:focus, textarea:focus {
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 0 12px rgba(255,255,255,0.3);
+}
+
+.image-preview {
+    height: 150px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.image-preview:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.15);
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    background: #fff;
+    color: #000;
+    transition: 0.4s ease;
+}
+
+button:hover {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.3);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width:600px){
+    .container {
+        width: 90%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Add New Post</h2>
+
+    <!-- FIXED FORM - Works with Flask -->
+    <form method="POST" action="/add" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label>Post Title</label>
+            <input type="text" name="title" placeholder="Enter your title" required>
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+            <select name="category" required>
+                <option value="Education">Education</option>
+                <option value="Technology">Technology</option>
+                <option value="Business">Business</option>
+                <option value="Travel">Travel</option>
+                <option value="Lifestyle">Lifestyle</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Featured Image</label>
+            <div class="image-preview">Hover Image Area</div>
+            <input type="file" name="image" required>
+        </div>
+
+        <div class="form-group">
+            <label>Post Content</label>
+            <textarea name="content" rows="5" placeholder="Write your content here..." required></textarea>
+        </div>
+
+        <button type="submit">Publish Post</button>
+    </form>
+</div>
+
+</body>
+</html>
